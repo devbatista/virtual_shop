@@ -11,4 +11,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+
+  def can_manage_products?
+    admin?
+  end
 end
