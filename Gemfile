@@ -53,6 +53,7 @@ group :development, :test do
   gem 'shoulda-matchers'
 
   gem 'pry-byebug'
+  gem 'awesome_print'
 end
 
 group :development do
@@ -72,5 +73,6 @@ group :test do
   gem "selenium-webdriver"
 end
 
+gem 'devise', '~> 4.9'
+
 gem "bcrypt", "~> 3.1.7"
-gem "devise"
