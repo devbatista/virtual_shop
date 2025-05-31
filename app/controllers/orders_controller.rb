@@ -1,6 +1,6 @@
 class OrdersController < BaseController
   before_action :authenticate_user!
-  before_action :set_order, only: [:show]
+  before_action :set_order, only: [:show, :cancel]
 
   def index
     @orders = current_user.orders
@@ -27,6 +27,15 @@ class OrdersController < BaseController
       redirect_to order_path(order), notice: "Order placed successfully."
     else
       redirect_to cart_path(cart), alert: "Your cart is empty."
+    end
+  end
+
+  def cancel
+    if @order.pending?
+      @order.update(status: :cancelled)
+      redirect_to orders_path, notice: "Order cancelled successfully."
+    else
+      redirect_to order_path(@order), alert: "This order cannot be cancelled."
     end
   end
 

@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   # root "posts#index"
   
   resource :products
+  
+  resource :orders, only: [:index, :show, :create] do
+    member do
+      patch :cancel
+    end
+  end
 end
