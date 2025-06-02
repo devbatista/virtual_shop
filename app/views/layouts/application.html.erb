@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VirtualShop</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Virtual Shop</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <!-- Inclua aqui outros links de CSS/JS do template -->
   </head>
-
-  <body>
+  <body class="preload-wrapper color-primary-9">
     <%= yield %>
   </body>
 </html>
