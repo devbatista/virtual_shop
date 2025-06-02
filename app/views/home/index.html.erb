@@ -1,0 +1,14 @@
+<!-- filepath: app/views/home/index.html.erb -->
+<h1>Bem-vindo à Virtual Shop!</h1>
+
+<p>Confira nossos produtos:</p>
+
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <strong><%= link_to product.name, product_path(product) %></strong>
+      - <%= number_to_currency(product.price) %>
+      (<%= product.stock %> em estoque)
+    </li>
+  <% end %>
+</ul>
