@@ -14,15 +14,15 @@ class Category < ApplicationRecord
     subcategories.flat_map { |c| [c.id] + c.descendant_ids }
   end
 
+  def full_path(separator = " > ")
+    parent ? "#{parent.full_path(separator)}#{separator}#{name}" : name
+  end
+
   private
 
     def cannot_be_own_parent
       if parent_id.present? && (parent_id == id || descendant_ids.include?(parent_id))
         errors.add(:parent_id, "can't be itself or a descendant")
       end
-    end
-
-    def full_path(separator = " > ")
-      parent ? "#{parent.full_path(separator)}#{separator}#{name}" : name
     end
 end

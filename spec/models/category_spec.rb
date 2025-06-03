@@ -28,4 +28,18 @@ RSpec.describe Category, type: :model do
       expect(root.errors[:parent_id]).to(include("can't be itself or a descendant"))
     end
   end
+
+  describe "#full_path" do
+    it "returns only the name for a root category" do
+      root = Category.create!(name: 'Root')
+      expect(root.full_path).to(eq("Root"))
+    end
+
+    it "returns the full path for a nested category" do
+      root = Category.create!(name: 'Root')
+      child = Category.create!(name: 'Child', parent: root)
+      grandchild = Category.create!(name: 'Grandchild', parent: child)
+      expect(grandchild.full_path).to(eq("Root > Child > Grandchild"))
+    end
+  end
 end
