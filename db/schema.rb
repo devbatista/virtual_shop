@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_03_181203) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_03_202944) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -68,6 +68,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_03_181203) do
     t.integer "stock"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "category_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -92,4 +94,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_03_181203) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users"
+  add_foreign_key "products", "categories"
 end
