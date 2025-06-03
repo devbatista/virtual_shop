@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Category, type: :model do
   describe "associations" do
     it { should belong_to(:parent).class_name('Category').optional }
+    it { should have_many(:products).dependent(:nullify) }
     it { should have_many(:subcategories).class_name('Category').with_foreign_key('parent_id').dependent(:destroy) }
   end
 
@@ -40,6 +41,23 @@ RSpec.describe Category, type: :model do
       child = Category.create!(name: 'Child', parent: root)
       grandchild = Category.create!(name: 'Grandchild', parent: child)
       expect(grandchild.full_path).to(eq("Root > Child > Grandchild"))
+    end
+  end
+
+  describe "products relationships" do
+    it "can have many products" do
+      category = Category.create!(name: "Electronics")
+      product1 = Product.create!(name: "TV", price: 1000, stock: 10, category: category)
+      product2 = Product.create!(name: "Radio", price: 100, stock: 5, category: category)
+      expect(category.products).to(include(product1, product2))
+      expect(category.products.count).to(eq(2))
+    end
+
+    it "nullifies product category on category destroy" do
+      category = Category.create!(name: "Books")
+      product = Product.create!(name: "Shop book", price: 50, stock: 3, category: category)
+      category.destroy
+      expect(product.reload.category_id).to(be_nil)
     end
   end
 end
