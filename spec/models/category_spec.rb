@@ -11,4 +11,13 @@ RSpec.describe Category, type: :model do
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name).scoped_to(:parent_id).with_message("must be unique per parent category") } 
   end
+
+  describe "custom validations: cannot_be_own_parent" do
+    it "does not allow a category to be its own parent" do
+      category = Category.create!(name: 'Root')
+      category.parent = category
+      expect(category.valid?).to(be_falsey)
+      expect(category.errors[:parent_id]).to include("can't be itself or a descendant")
+    end
+  end
 end
