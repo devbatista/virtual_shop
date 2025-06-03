@@ -17,7 +17,15 @@ RSpec.describe Category, type: :model do
       category = Category.create!(name: 'Root')
       category.parent = category
       expect(category.valid?).to(be_falsey)
-      expect(category.errors[:parent_id]).to include("can't be itself or a descendant")
+      expect(category.errors[:parent_id]).to(include("can't be itself or a descendant"))
+    end
+
+    it "does not allow a category to be a descendant of itself" do
+      root = Category.create!(name: 'Root')
+      child = Category.create!(name: 'Child', parent: root)
+      root.parent = child
+      expect(root.valid?).to(be_falsey)
+      expect(root.errors[:parent_id]).to(include("can't be itself or a descendant"))
     end
   end
 end
