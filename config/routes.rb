@@ -16,4 +16,8 @@ Rails.application.routes.draw do
       patch :cancel
     end
   end
+
+  namespace :admin do
+    get 'dashboard', to: 'dashboard#index'
+  end
 end
