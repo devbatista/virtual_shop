@@ -12,11 +12,11 @@ macbook = Product.find_by(name: "MacBook Air M3")
 airpods = Product.find_by(name: "AirPods Pro (2nd generation)")
 case_iphone = Product.find_by(name: "Case for iPhone")
 
-# Order 1: customer, completed
+# Order 1: customer, paid
 order1 = Order.create!(
   user: customer,
   total: iphone.price + ipad.price,
-  status: "completed"
+  status: "paid"
 )
 OrderItem.create!(order: order1, product: iphone, quantity: 1, price: iphone.price)
 OrderItem.create!(order: order1, product: ipad, quantity: 1, price: ipad.price)
