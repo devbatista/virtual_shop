@@ -5,7 +5,7 @@ User.create!(
   name: "Rafael Batista",
   email: "rafael@devbatista.com",
   password: "senha123",
-  passowd_confirmation: "senha_123",
+  password_confirmation: "senha_123",
   role: :admin
 )
 

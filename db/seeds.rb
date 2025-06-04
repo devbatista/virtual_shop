@@ -9,3 +9,7 @@
 #   end
 
 load Rails.root.join('db/seeds/0-prepare.rb')
+load Rails.root.join('db/seeds/1-users.rb')
+load Rails.root.join('db/seeds/2-categories.rb')
+load Rails.root.join('db/seeds/3-products.rb')
+load Rails.root.join('db/seeds/4-orders.rb')
