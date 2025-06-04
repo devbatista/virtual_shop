@@ -29,11 +29,11 @@ order2 = Order.create!(
 )
 OrderItem.create!(order: order2, product: watch, quantity: 2, price: watch.price)
 
-# Order 3: customer, processing
+# Order 3: customer, shipped
 order3 = Order.create!(
   user: customer,
   total: macbook.price + airpods.price,
-  status: "processing"
+  status: "shipped"
 )
 OrderItem.create!(order: order3, product: macbook, quantity: 1, price: macbook.price)
 OrderItem.create!(order: order3, product: airpods, quantity: 1, price: airpods.price)
@@ -41,7 +41,7 @@ OrderItem.create!(order: order3, product: airpods, quantity: 1, price: airpods.p
 # Order 4: admin, cancelled
 order4 = Order.create!(
   user: admin,
-  total: case_iphone.price,
+  total: case_iphone.price * 3,
   status: "cancelled"
 )
 OrderItem.create!(order: order4, product: case_iphone, quantity: 3, price: case_iphone.price)
