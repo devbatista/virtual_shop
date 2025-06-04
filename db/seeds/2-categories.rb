@@ -44,3 +44,5 @@ Category.create!(name: "Ipad", parent: acessories)
 Category.create!(name: "Iphone", parent: acessories)
 Category.create!(name: "Watch", parent: acessories)
 Category.create!(name: "AirPods", parent: acessories)
+
+puts "Categories created successfully"

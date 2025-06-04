@@ -17,3 +17,5 @@ User.create!(
   password_confirmation: "senha123",
   role: :customer
 )
+
+puts "Users created successfully"
