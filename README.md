@@ -1,24 +1,81 @@
-# README
+# Virtual Shop
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple e-commerce platform built with Ruby on Rails.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- User authentication (Devise)
+- Admin and customer roles
+- Product categories with nested (parent/child) relationships
+- Product management (CRUD)
+- Order management with order items
+- Seeds for users, categories, products, and orders
+- RSpec tests for models and business rules
 
-* System dependencies
+## Models
 
-* Configuration
+### User
+- Devise authentication
+- Roles: `customer` (default), `admin`
+- Associations: has many orders, has many carts
 
-* Database creation
+### Category
+- Self-referencing: supports parent and subcategories
+- Associations: has many products, has many subcategories
+- Validations: unique name per parent, cannot be its own parent or descendant
 
-* Database initialization
+### Product
+- Belongs to a category
+- Associations: has many order items, has many cart items
+- Validations: name, price, and stock presence; price and stock must be non-negative
 
-* How to run the test suite
+### Order
+- Belongs to a user
+- Has many order items
+- Status enum: `pending`, `paid`, `shipped`, `delivered`, `cancelled`
+- Validations: status and total presence
 
-* Services (job queues, cache servers, search engines, etc.)
+### OrderItem
+- Belongs to an order and a product
+- Stores quantity and price at the time of order
 
-* Deployment instructions
+## Seeds
 
-* ...
+Seeds are organized in `db/seeds/`:
+- `0-prepare.rb`: Cleans the database
+- `1-users.rb`: Creates admin and customer users
+- `2-categories.rb`: Creates categories and subcategories
+- `3-products.rb`: Creates products linked to categories
+- `4-orders.rb`: Creates sample orders and order items
+
+To load all seeds:
+
+```sh
+rails db:seed
+```
+
+## Running Tests
+
+RSpec is used for model and business rule testing:
+
+```sh
+bundle exec rspec
+```
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies: `bundle install`
+3. Setup the database: `rails db:setup`
+4. Run the server: `rails server`
+5. Access at [http://localhost:3000](http://localhost:3000)
+
+## Admin Access
+
+- Default admin user (from seeds):
+  - Email: `rafael@devbatista.com`
+  - Password: `senha123`
+
+---
+
+Feel free to contribute or adapt this project!
