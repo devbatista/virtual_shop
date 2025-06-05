@@ -79,3 +79,5 @@ bundle exec rspec
 ---
 
 Feel free to contribute or adapt this project!
+
+> ⚠️ **This project is under active development and is being used as a study platform. New features and improvements (including frontend) are being implemented over time. Feel free to follow, suggest, or contribute!**
