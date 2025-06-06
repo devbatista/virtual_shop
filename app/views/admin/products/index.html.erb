@@ -17,7 +17,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.category&.name %></td>
+        <td><%= product.category&.full_path %></td>
         <td><%= number_to_currency(product.price) %></td>
         <td><%= product.stock %></td>
         <td><%= link_to "Show", admin_product_path(product), class: "btn btn-sm btn-info" %></td>
