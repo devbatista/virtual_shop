@@ -1,0 +1,27 @@
+<!-- filepath: app/views/admin/orders/index.html.erb -->
+<h1>Orders</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>Status</th>
+      <th>Total</th>
+      <th>Created At</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.user&.name %></td>
+        <td><%= order.status.capitalize %></td>
+        <td><%= number_to_currency(order.total) %></td>
+        <td><%= l(order.created_at, format: :short) %></td>
+        <td><%= link_to "Show", admin_order_path(order), class: "btn btn-sm btn-info" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

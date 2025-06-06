@@ -1,0 +1,31 @@
+<!-- filepath: app/views/admin/orders/show.html.erb -->
+<h1>Order <%= @order.id %></h1>
+
+<p><strong>User:</strong> <%= @order.user&.name %> (<%= @order.user&.email %>)</p>
+<p><strong>Status:</strong> <%= @order.status.capitalize %></p>
+<p><strong>Total:</strong> <%= number_to_currency(@order.total) %></p>
+<p><strong>Created At:</strong> <%= l(@order.created_at, format: :short) %></p>
+
+<h3>Order Items</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Unit Price</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |item| %>
+      <tr>
+        <td><%= item.product&.name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= number_to_currency(item.price) %></td>
+        <td><%= number_to_currency(item.price * item.quantity) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Back", admin_orders_path, class: "btn btn-secondary" %>
