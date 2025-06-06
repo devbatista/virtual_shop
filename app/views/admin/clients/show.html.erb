@@ -1,0 +1,9 @@
+<!-- filepath: app/views/admin/clients/show.html.erb -->
+<h1>Client: <%= @client.name %></h1>
+
+<p><strong>Email:</strong> <%= @client.email %></p>
+<p><strong>Phone:</strong> <%= @client.phone.presence || "-" %></p>
+<p><strong>Birthdate:</strong> <%= @client.birthdate&.strftime("%d/%m/%Y") || "-" %></p>
+<p><strong>Created At:</strong> <%= l(@client.created_at, format: :short) %></p>
+
+<%= link_to "Back", admin_clients_path, class: "btn btn-secondary" %>
