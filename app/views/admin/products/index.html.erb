@@ -49,7 +49,9 @@
                       </div>
                   </form>
               </div>
-              <a class="tf-button style-1 w208" href="add-product.html"><i class="icon-plus"></i>Add new</a>
+              <%= link_to new_admin_product_path, class: "tf-button style-1 w208" do %>
+                <i class="icon-plus"></i>Add new
+              <% end %>
           </div>
           <div class="wg-table table-product-list">
               <ul class="table-title flex gap20 mb-14">
