@@ -72,9 +72,6 @@
             <div class="body-title">Quantity</div>
           </li>
           <li>
-            <div class="body-title">Sale</div>
-          </li>
-          <li>
             <div class="body-title">Stock</div>
           </li>
           <li>
@@ -85,122 +82,43 @@
           </li>
         </ul>
         <ul class="flex flex-column">
-          <li class="wg-product item-row gap20">
-            <div class="name">
-              <div class="image">
-                <img src="images/products/product-1.jpg" alt="">
+          <% @products.each do |product| %>
+            <li class="wg-product item-row gap20">
+              <div class="name">
+                <div class="title line-clamp-2 mb-0">
+                  <%= link_to product.name, admin_product_path(product), class: "body-text" %>
+                </div>
               </div>
-              <div class="title line-clamp-2 mb-0">
-                <a href="#" class="body-text">Dog Food, Chicken & Chicken Liver Recipe...</a>
+              <div class="body-text text-main-dark mt-4">#<%= product.id[0,8] %></div>
+              <div class="body-text text-main-dark mt-4"><%= number_to_currency(product.price) %></div>
+              <div class="body-text text-main-dark mt-4"><%= product.stock %></div>
+              <div>
+                <% if product.in_stock? %>
+                  <div class="block-available bg-1 fw-7">In Stock</div>
+                <% else %>
+                  <div class="block-stock bg-1 fw-7">Out of stock</div>
+                <% end %>
               </div>
-            </div>
-            <div class="body-text text-main-dark mt-4">#7712309</div>
-            <div class="body-text text-main-dark mt-4">$1,452.500</div>
-            <div class="body-text text-main-dark mt-4">1,638</div>
-            <div class="body-text text-main-dark mt-4">20</div>
-            <div>
-              <div class="block-stock bg-1 fw-7">Out of stock</div>
-            </div>
-            <div class="body-text text-main-dark mt-4">08/24/2024</div>
-            <div class="list-icon-function">
-              <div class="item eye">
-                <i class="icon-eye"></i>
+              <div class="body-text text-main-dark mt-4"><%= product.created_at.strftime("%d/%m/%Y") %></div>
+              <div class="list-icon-function">
+                <div class="item eye">
+                  <%= link_to admin_product_path(product) do %>
+                    <i class="icon-eye"></i>
+                  <% end %>
+                </div>
+                <div class="item edit">
+                  <%= link_to edit_admin_product_path(product) do %>
+                    <i class="icon-edit-3"></i>
+                  <% end %>
+                </div>
+                <div class="item trash">
+                  <%= link_to admin_product_path(product), method: :delete, data: { confirm: "Are you sure?" } do %>
+                    <i class="icon-trash-2"></i>
+                  <% end %>
+                </div>
               </div>
-              <div class="item edit">
-                <i class="icon-edit-3"></i>
-              </div>
-              <div class="item trash">
-                <i class="icon-trash-2"></i>
-              </div>
-            </div>
-          </li>
-          <li class="wg-product item-row gap20">
-            <div class="name">
-              <div class="image">
-                <img src="images/products/product-2.jpg" alt="">
-              </div>
-              <div class="title line-clamp-2 mb-0">
-                <a href="#" class="body-text">Grain Free Dry Dog Food </a>
-              </div>
-            </div>
-            <div class="body-text text-main-dark mt-4">#7712309</div>
-            <div class="body-text text-main-dark mt-4">$1,452.500</div>
-            <div class="body-text text-main-dark mt-4">1,638</div>
-            <div class="body-text text-main-dark mt-4">20</div>
-            <div>
-              <div class="block-available bg-1 fw-7">In Stock</div>
-            </div>
-            <div class="body-text text-main-dark mt-4">08/24/2024</div>
-            <div class="list-icon-function">
-              <div class="item eye">
-                <i class="icon-eye"></i>
-              </div>
-              <div class="item edit">
-                <i class="icon-edit-3"></i>
-              </div>
-              <div class="item trash">
-                <i class="icon-trash-2"></i>
-              </div>
-            </div>
-          </li>
-          <li class="wg-product item-row gap20">
-            <div class="name">
-              <div class="image">
-                <img src="images/products/product-3.jpg" alt="">
-              </div>
-              <div class="title line-clamp-2 mb-0">
-                <a href="#" class="body-text">Weruva Pumpkin Patch Up! Pumpkin With Ginger... </a>
-              </div>
-            </div>
-            <div class="body-text text-main-dark mt-4">#7712309</div>
-            <div class="body-text text-main-dark mt-4">$1,452.500</div>
-            <div class="body-text text-main-dark mt-4">1,638</div>
-            <div class="body-text text-main-dark mt-4">20</div>
-            <div>
-              <div class="block-available bg-1 fw-7">In Stock</div>
-            </div>
-            <div class="body-text text-main-dark mt-4">08/24/2024</div>
-            <div class="list-icon-function">
-              <div class="item eye">
-                <i class="icon-eye"></i>
-              </div>
-              <div class="item edit">
-                <i class="icon-edit-3"></i>
-              </div>
-              <div class="item trash">
-                <i class="icon-trash-2"></i>
-              </div>
-            </div>
-          </li>
-          <li class="wg-product item-row gap20">
-            <div class="name">
-              <div class="image">
-                <img src="images/products/product-4.jpg" alt="">
-              </div>
-              <div class="title line-clamp-2 mb-0">
-                <a href="#" class="body-text">Milk-Bone Mini's Flavor Snacks Dog Treats, 15 Ounce </a>
-              </div>
-            </div>
-            <div class="body-text text-main-dark mt-4">#7712309</div>
-            <div class="body-text text-main-dark mt-4">$1,452.500</div>
-            <div class="body-text text-main-dark mt-4">1,638</div>
-            <div class="body-text text-main-dark mt-4">20</div>
-            <div>
-              <div class="block-available bg-1 fw-7">In Stock</div>
-            </div>
-            <div class="body-text text-main-dark mt-4">08/24/2024</div>
-            <div class="list-icon-function">
-              <div class="item eye">
-                <i class="icon-eye"></i>
-              </div>
-              <div class="item edit">
-                <i class="icon-edit-3"></i>
-              </div>
-              <div class="item trash">
-                <i class="icon-trash-2"></i>
-              </div>
-            </div>
-          </li>
+            </li>
+          <% end %>
         </ul>
       </div>
       <div class="divider"></div>
