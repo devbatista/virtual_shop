@@ -10,6 +10,7 @@
   <meta charset="utf-8">
   <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
   <title>VirtualShop</title>
+  <%= csrf_meta_tags %>
   <meta name="author" content="Rafael Batista">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -88,10 +89,13 @@
                     <% end %>
                   </li>
                   <li class="menu-item">
-                    <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
-                    <div class="icon"><i class="icon-log-out"></i></div>
-                    <div class="text">Logout</div>
-                    <% end %>
+                    <a class="nav-link" href="<%= destroy_user_session_path %>" 
+                                        data-turbo-method="delete" 
+                                        rel="nofollow" 
+                                        data-turbo-confirm="Tem certeza que deseja sair?">
+                      <div class="icon"><i class="icon-log-out"></i></div>
+                      <div class="text">Logout</div>
+                    </a>
                   </li>
                 </ul>
               </div>
