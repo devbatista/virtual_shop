@@ -7,6 +7,7 @@
 //= link css/bootstrap.css
 //= link css/bootstrap-select.min.css
 //= link font/fonts.css
+//= link_tree ../fonts
 //= link icon/style.css
 
 //= link_tree ../../javascript .js
