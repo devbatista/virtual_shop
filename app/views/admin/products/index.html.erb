@@ -1,4 +1,5 @@
 <div class="main-content-inner">
+  <%= render 'layouts/flash' %>
   <!-- main-content-wrap -->
   <div class="main-content-wrap">
     <div class="flex items-center flex-wrap justify-between gap20 mb-30">
@@ -112,7 +113,7 @@
                   <% end %>
                 </div>
                 <div class="item trash">
-                  <%= link_to admin_product_path(product), method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <%= link_to admin_product_path(product), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
                     <i class="icon-trash-2"></i>
                   <% end %>
                 </div>
