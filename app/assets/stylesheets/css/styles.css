@@ -4189,9 +4189,6 @@ select option {
 .wg-table.table-product-list .wg-product:hover {
   background-color: var(--hv-item) !important;
 }
-.wg-table.table-all-category > * {
-  min-width: 1492px;
-}
 .wg-table.table-all-category .wg-product,
 .wg-table.table-all-category ul.table-title {
   padding: 12px;

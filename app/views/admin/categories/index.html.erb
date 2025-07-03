@@ -59,7 +59,7 @@
             <div class="body-title">Category</div>
           </li>
           <li>
-            <div class="body-title">Start date</div>
+            <div class="body-title">Parent</div>
           </li>
           <li>
             <div class="body-title">Action</div>
@@ -68,14 +68,11 @@
         <ul class="flex flex-column">
           <li class="wg-product item-row gap20">
             <div class="name">
-              <div class="image">
-                <img src="images/products/product-1.jpg" alt="">
-              </div>
               <div class="title line-clamp-2 mb-0">
-                <a href="#" class="body-text">Oversized Motif T-shirt</a>
+                <a href="#" class="body-text"><%= @categories.first.name %></a>
               </div>
             </div>
-            <div class="body-text text-main-dark mt-4">20 Nov 2023</div>
+            <div class="body-text text-main-dark mt-4"><%= @categories.first.parent || ''%></div>
             <div class="list-icon-function">
               <div class="item eye">
                 <i class="icon-eye"></i>
