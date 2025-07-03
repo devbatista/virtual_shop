@@ -12,39 +12,25 @@
 <% end %> -->
 
 <div class="wg-box">
-  <form class="form-new-product form-style-1">
+  <%= form_with(model: [:admin, @category], local: true, class:"form-new-product form-style-1") do |form| %>
     <fieldset class="name">
-      <div class="body-title">Product name <span class="tf-color-1">*</span></div>
-      <input class="flex-grow" type="text" placeholder="Category name" name="text" tabindex="0" value="" aria-required="true" required="">
-    </fieldset>
-    <fieldset>
-      <div class="body-title">Upload images <span class="tf-color-1">*</span></div>
-      <div class="upload-image flex-grow">
-        <div class="item up-load">
-          <label class="uploadfile h250" for="myFile">
-            <span class="icon">
-              <i class="icon-upload-cloud"></i>
-            </span>
-            <span class="body-text">Drop your images here or select <span class="tf-color">click to browse</span></span>
-            <img id="myFile-input" src="" alt="">
-            <input type="file" id="myFile" name="filename">
-          </label>
-        </div>
-      </div>
+      <div class="body-title">Category name <span class="tf-color-1">*</span></div>
+      <%= form.text_field :name, class: "flex-grow", placeholder: "Category name", required: true %>
     </fieldset>
     <fieldset class="category">
-      <div class="body-title">Select category icon</div>
+      <div class="body-title">Parent category</div>
       <div class="select flex-grow">
-        <select class="">
-          <option>Select icon</option>
-          <option>icon 1</option>
-          <option>icon 2</option>
-        </select>
+        <%= form.collection_select :parent_id, 
+                                   Category.where.not(id: @category.id), 
+                                   :id, 
+                                   :full_path, 
+                                   { prompt: "No parent" }, 
+                                   class: "" %>
       </div>
     </fieldset>
     <div class="bot">
       <div></div>
       <button class="tf-button w208" type="submit">Save</button>
     </div>
-  </form>
+  <% end %>
 </div>
