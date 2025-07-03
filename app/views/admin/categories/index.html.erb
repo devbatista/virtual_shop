@@ -1,4 +1,5 @@
 <div class="main-content-inner">
+  <%= render 'layouts/flash' %>
   <!-- main-content-wrap -->
   <div class="main-content-wrap">
     <div class="flex items-center flex-wrap justify-between gap20 mb-30">
@@ -66,25 +67,33 @@
           </li>
         </ul>
         <ul class="flex flex-column">
-          <li class="wg-product item-row gap20">
-            <div class="name">
-              <div class="title line-clamp-2 mb-0">
-                <a href="#" class="body-text"><%= @categories.first.name %></a>
+          <% @categories.each do |category| %>
+            <li class="wg-product item-row gap20">
+              <div class="name">
+                <div class="title line-clamp-2 mb-0">
+                  <a href="#" class="body-text"><%= category.name %></a>
+                </div>
               </div>
-            </div>
-            <div class="body-text text-main-dark mt-4"><%= @categories.first.parent || ''%></div>
-            <div class="list-icon-function">
-              <div class="item eye">
-                <i class="icon-eye"></i>
+              <div class="body-text text-main-dark mt-4"><%= category.full_path || '' %></div>
+              <div class="list-icon-function">
+                <div class="item eye">
+                  <%= link_to admin_category_path(category) do %>
+                    <i class="icon-eye"></i>
+                  <% end %>
+                </div>
+                <div class="item edit">
+                  <%= link_to edit_admin_category_path(category) do %>
+                    <i class="icon-edit-3"></i>
+                  <% end %>
+                </div>
+                <div class="item trash">
+                  <%= link_to admin_category_path(category), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                    <i class="icon-trash-2"></i>
+                  <% end %>
+                </div>
               </div>
-              <div class="item edit">
-                <i class="icon-edit-3"></i>
-              </div>
-              <div class="item trash">
-                <i class="icon-trash-2"></i>
-              </div>
-            </div>
-          </li>
+            </li>
+           <% end %> 
         </ul>
       </div>
       <div class="divider"></div>

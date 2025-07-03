@@ -13,15 +13,15 @@
         var toggle = $(".button-dark-light");
 
         // setting dark is default
-        // if (localStorage.toggled === 'dark-theme' || localStorage.toggled === 'light-theme' ) {
-        // } else {
-        //     localStorage.toggled = 'dark-theme';
-        // }
-        // if (localStorage.toggled === 'dark-theme') {
-        //     $("body").addClass("dark-theme");
-        // } else {
-        //     $("body").addClass("light-theme");
-        // }
+        if (localStorage.toggled === 'dark-theme' || localStorage.toggled === 'light-theme' ) {
+        } else {
+            localStorage.toggled = 'dark-theme';
+        }
+        if (localStorage.toggled === 'dark-theme') {
+            $("body").addClass("dark-theme");
+        } else {
+            $("body").addClass("light-theme");
+        }
         // end setting dark is default
 
         toggle.on("click", function () {
