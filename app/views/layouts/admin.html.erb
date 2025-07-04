@@ -89,7 +89,7 @@
                     <% end %>
                   </li>
                   <li class="menu-item">
-                    <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+                    <%= link_to logout_path, data: { turbo_method: :delete }, class: "nav-link" do %>
                     <div class="icon"><i class="icon-log-out"></i></div>
                     <div class="text">Logout</div>
                     <% end %>
