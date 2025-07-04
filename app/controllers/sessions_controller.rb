@@ -1,6 +1,8 @@
 class SessionsController < BaseController
   layout false
 
+  before_action :redirect_if_authenticated, only: :new
+
   def new;end
 
   def create
@@ -23,4 +25,12 @@ class SessionsController < BaseController
 
     redirect_to path, notice: "Logout successful!"
   end
+
+  private
+
+    def redirect_if_authenticated
+      if session[:user_id]
+        redirect_to admin_root_path
+      end
+    end
 end
