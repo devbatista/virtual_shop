@@ -28,7 +28,7 @@
             <li class="nav-item"><a class="nav-link" href="/products">Products</a></li>
             <li class="nav-item"><a class="nav-link" href="/categories">Categories</a></li>
             <% if user_signed_in? %>
-              <li class="nav-item"><a class="nav-link" href="#">Hello, <%= current_user.name %></a></li>
+              <li class="nav-item"><a class="nav-link" href="<%= admin_root_path if current_user.admin? %>">Hello, <%= current_user.name %></a></li>
               <li class="nav-item"><%= link_to "Logout", logout_path, data: {turbo_method: :delete}, class: "nav-link" %></li>
             <% else %>
               <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
