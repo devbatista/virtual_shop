@@ -88,6 +88,12 @@
                     <div class="text">Back to Shop</div>
                     <% end %>
                   </li>
+                  <li class="menu-item mt-3">
+                    <%= link_to admin_root_path, class: "nav-link" do %>
+                    <div class="icon"><i class="icon-settings"></i></div>
+                    <div class="text">Settings</div>
+                    <% end %>
+                  </li>
                   <li class="menu-item">
                     <%= link_to logout_path, data: { turbo_method: :delete }, class: "nav-link" do %>
                     <div class="icon"><i class="icon-log-out"></i></div>
