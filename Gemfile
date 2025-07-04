@@ -73,8 +73,8 @@ group :test do
   gem "selenium-webdriver"
 end
 
+gem "stringio", "3.1.7"
 gem 'devise', '~> 4.9'
-
 gem "bcrypt", "~> 3.1.7"
-
 gem "sassc-rails"
+gem "kaminari"

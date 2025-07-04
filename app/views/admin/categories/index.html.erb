@@ -68,45 +68,45 @@
         </ul>
         <ul class="flex flex-column">
           <% @categories.each do |category| %>
-            <li class="wg-product item-row gap20">
-              <div class="name">
-                <div class="title line-clamp-2 mb-0">
-                  <a href="#" class="body-text"><%= category.name %></a>
-                </div>
+          <li class="wg-product item-row gap20">
+            <div class="name">
+              <div class="title line-clamp-2 mb-0">
+                <a href="#" class="body-text"><%= category.name %></a>
               </div>
-              <div class="body-text text-main-dark mt-4"><%= category.full_path || '' %></div>
-              <div class="list-icon-function">
-                <div class="item eye">
-                  <%= link_to admin_category_path(category) do %>
-                    <i class="icon-eye"></i>
-                  <% end %>
-                </div>
-                <div class="item edit">
-                  <%= link_to edit_admin_category_path(category) do %>
-                    <i class="icon-edit-3"></i>
-                  <% end %>
-                </div>
-                <div class="item trash">
-                  <%= link_to admin_category_path(category), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                    <i class="icon-trash-2"></i>
-                  <% end %>
-                </div>
+            </div>
+            <div class="body-text text-main-dark mt-4"><%= category.full_path || '' %></div>
+            <div class="list-icon-function">
+              <div class="item eye">
+                <%= link_to admin_category_path(category) do %>
+                <i class="icon-eye"></i>
+                <% end %>
               </div>
-            </li>
-           <% end %> 
+              <div class="item edit">
+                <%= link_to edit_admin_category_path(category) do %>
+                <i class="icon-edit-3"></i>
+                <% end %>
+              </div>
+              <div class="item trash">
+                <%= link_to admin_category_path(category), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                <i class="icon-trash-2"></i>
+                <% end %>
+              </div>
+            </div>
+          </li>
+          <% end %>
         </ul>
       </div>
       <div class="divider"></div>
       <div class="flex items-center justify-between flex-wrap gap10">
         <div class="text-tiny">Showing 10 entries</div>
-        <ul class="wg-pagination">
+        <%# <ul class="wg-pagination">
           <li>
             <a href="#"><i class="icon-chevron-left"></i></a>
           </li>
-          <li>
+          <li class="active">
             <a href="#">1</a>
           </li>
-          <li class="active">
+          <li>
             <a href="#">2</a>
           </li>
           <li>
@@ -115,7 +115,43 @@
           <li>
             <a href="#"><i class="icon-chevron-right"></i></a>
           </li>
-        </ul>
+        </ul> %>
+        <ul class="wg-pagination">
+          <!-- Página anterior -->
+          <li class="<%= 'disabled' unless @categories.prev_page %>">
+            <% if @categories.prev_page %>
+              <%= link_to url_for(page: @categories.prev_page), class: "" do %>
+                <i class="icon-chevron-left"></i>
+              <% end %>
+            <% else %>
+              <span><i class="icon-chevron-left"></i></span>
+            <% end %>
+          </li>
+
+          <!-- Números das páginas -->
+          <% (1..@categories.total_pages).each do |page| %>
+            <li class="<%= 'active' if page == @categories.current_page %>">
+              <% if page == @categories.current_page %>
+                <a class="disabled">
+                  <%= page %><!-- Ou qualquer ícone que quiser -->
+                </a>
+              <% else %>
+                <%= link_to page, url_for(page: page) %>
+              <% end %>
+            </li>
+          <% end %>
+
+          <!-- Próxima página -->
+          <li class="<%= 'disabled' unless @categories.next_page %>">
+            <% if @categories.next_page %>
+              <%= link_to url_for(page: @categories.next_page), class: "" do %>
+                <i class="icon-chevron-right"></i>
+              <% end %>
+            <% else %>
+              <span><i class="icon-chevron-right"></i></span>
+            <% end %>
+          </li>
+          </ul>
       </div>
     </div>
     <!-- /all-category -->
