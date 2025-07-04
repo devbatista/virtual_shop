@@ -4379,16 +4379,13 @@ select option {
 .wg-table.table-order-track .cart-totals-item > div:nth-child(4) {
   width: 412px;
 }
-.wg-table.table-all-user > * {
-  min-width: 1492px;
-}
 .wg-table.table-all-user ul.table-title {
   padding: 12px;
   border-radius: 12px;
   background: var(--Surface-3);
 }
 .wg-table.table-all-user ul.table-title li {
-  width: 100%;
+  width: 25% !important;
 }
 .wg-table.table-all-user ul.table-title li:last-child {
   width: 110px;
