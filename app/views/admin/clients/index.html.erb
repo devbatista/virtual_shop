@@ -1,212 +1,96 @@
 <div class="main-content-inner">
   <!-- main-content-wrap -->
   <div class="main-content-wrap">
-      <div class="flex items-center flex-wrap justify-between gap20 mb-30">
-          <h3>All User</h3>
-          <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
-              <li>
-                  <a href="index.html"><div class="text-tiny">Dashboard</div></a>
-              </li>
-              <li>
-                  <i class="icon-chevron-right"></i>
-              </li>
-              <li>
-                  <a href="#"><div class="text-tiny">User</div></a>
-              </li>
-              <li>
-                  <i class="icon-chevron-right"></i>
-              </li>
-              <li>
-                  <div class="text-tiny">All User</div>
-              </li>
-          </ul>
+    <div class="flex items-center flex-wrap justify-between gap20 mb-30">
+      <h3>Clients</h3>
+      <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
+        <li>
+          <a href="index.html">
+            <div class="text-tiny">Dashboard</div>
+          </a>
+        </li>
+        <li>
+          <i class="icon-chevron-right"></i>
+        </li>
+        <li>
+          <a href="#">
+            <div class="text-tiny">Clients</div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- all-user -->
+    <div class="wg-box">
+      <div class="flex items-center justify-between gap10 flex-wrap">
+        <div class="wg-filter flex-grow">
+          <form class="form-search">
+            <fieldset class="name">
+              <input type="text" placeholder="Search here..." class="" name="name" tabindex="2" value="" aria-required="true" required="">
+            </fieldset>
+            <div class="button-submit">
+              <button class="" type="submit"><i class="icon-search"></i></button>
+            </div>
+          </form>
+        </div>
       </div>
-      <!-- all-user -->
-      <div class="wg-box">
-          <div class="flex items-center justify-between gap10 flex-wrap">
-              <div class="wg-filter flex-grow">
-                  <form class="form-search">
-                      <fieldset class="name">
-                          <input type="text" placeholder="Search here..." class="" name="name" tabindex="2" value="" aria-required="true" required="">
-                      </fieldset>
-                      <div class="button-submit">
-                          <button class="" type="submit"><i class="icon-search"></i></button>
-                      </div>
-                  </form>
+      <div class="wg-table table-all-user">
+        <ul class="table-title flex gap8 mb-8">
+          <li>
+            <div class="body-title">Client</div>
+          </li>
+          <li>
+            <div class="body-title">Phone</div>
+          </li>
+          <li>
+            <div class="body-title">Birthdate</div>
+          </li>
+          <li>
+            <div class="body-title">Email</div>
+          </li>
+        </ul>
+        <ul class="flex flex-column">
+          <% @clients.each do |client| %>
+            <li class="wg-product item-row">
+              <div class="name flex-grow">
+                <div class="image">
+                  <%= image_tag "products/product-1.jpg", alt: "" %>
+                </div>
+                <div>
+                  <div class="title">
+                    <a href="#" class="body-title-2"><%= client.name %></a>
+                  </div>
+                </div>
               </div>
-              <a class="tf-button style-1 w208" href="add-new-user.html"><i class="icon-plus"></i>Add new</a>
-          </div>
-          <div class="wg-table table-all-user">
-              <ul class="table-title flex gap20 mb-14">
-                  <li>
-                      <div class="body-title">User</div>
-                  </li>    
-                  <li>
-                      <div class="body-title">Phone</div>
-                  </li>
-                  <li>
-                      <div class="body-title">Email</div>
-                  </li>
-                  <li>
-                      <div class="body-title">Action</div>
-                  </li>
-              </ul>
-              <ul class="flex flex-column">
-                  <li class="wg-product item-row">
-                      <div class="name flex-grow">
-                          <div class="image">
-                              <img src="images/products/product-1.jpg" alt="">
-                          </div>
-                          <div>
-                              <div class="title">
-                                  <a href="#" class="body-title-2">V-neck linen T-shirt</a>
-                              </div>
-                              <div class="text-tiny">Product name</div>
-                          </div>
-                      </div>
-                      <div class="body-text">(212) 555-1234</div>
-                      <div class="body-text">info@fashionshop.com</div>
-                      <div class="list-icon-function">
-                          <div class="item eye">
-                              <i class="icon-eye"></i>
-                          </div>
-                          <div class="item edit">
-                              <i class="icon-edit-3"></i>
-                          </div>
-                          <div class="item trash">
-                              <i class="icon-trash-2"></i>
-                          </div>
-                      </div>
-                  </li>
-                  <li class="wg-product item-row">
-                      <div class="name flex-grow">
-                          <div class="image">
-                              <img src="images/products/product-2.jpg" alt="">
-                          </div>
-                          <div>
-                              <div class="title">
-                                  <a href="#" class="body-title-2">Neptune Longsleeve</a>
-                              </div>
-                              <div class="text-tiny">Product name</div>
-                          </div>
-                      </div>
-                      <div class="body-text">(212) 555-1234</div>
-                      <div class="body-text">info@fashionshop.com</div>
-                      <div class="list-icon-function">
-                          <div class="item eye">
-                              <i class="icon-eye"></i>
-                          </div>
-                          <div class="item edit">
-                              <i class="icon-edit-3"></i>
-                          </div>
-                          <div class="item trash">
-                              <i class="icon-trash-2"></i>
-                          </div>
-                      </div>
-                  </li>
-                  <li class="wg-product item-row">
-                      <div class="name flex-grow">
-                          <div class="image">
-                              <img src="images/products/product-3.jpg" alt="">
-                          </div>
-                          <div>
-                              <div class="title">
-                                  <a href="#" class="body-title-2">Ribbed Tank Top</a>
-                              </div>
-                              <div class="text-tiny">Product name</div>
-                          </div>
-                      </div>
-                      <div class="body-text">(212) 555-1234</div>
-                      <div class="body-text">info@fashionshop.com</div>
-                      <div class="list-icon-function">
-                          <div class="item eye">
-                              <i class="icon-eye"></i>
-                          </div>
-                          <div class="item edit">
-                              <i class="icon-edit-3"></i>
-                          </div>
-                          <div class="item trash">
-                              <i class="icon-trash-2"></i>
-                          </div>
-                      </div>
-                  </li>
-                  <li class="wg-product item-row">
-                      <div class="name flex-grow">
-                          <div class="image">
-                              <img src="images/products/product-4.jpg" alt="">
-                          </div>
-                          <div>
-                              <div class="title">
-                                  <a href="#" class="body-title-2">Oversized Motif T-shirt</a>
-                              </div>
-                              <div class="text-tiny">Product name</div>
-                          </div>
-                      </div>
-                      <div class="body-text">(212) 555-1234</div>
-                      <div class="body-text">info@fashionshop.com</div>
-                      <div class="list-icon-function">
-                          <div class="item eye">
-                              <i class="icon-eye"></i>
-                          </div>
-                          <div class="item edit">
-                              <i class="icon-edit-3"></i>
-                          </div>
-                          <div class="item trash">
-                              <i class="icon-trash-2"></i>
-                          </div>
-                      </div>
-                  </li>
-                  <li class="wg-product item-row">
-                      <div class="name flex-grow">
-                          <div class="image">
-                              <img src="images/products/product-5.jpg" alt="">
-                          </div>
-                          <div>
-                              <div class="title">
-                                  <a href="#" class="body-title-2">Jersey thong body</a>
-                              </div>
-                              <div class="text-tiny">Product name</div>
-                          </div>
-                      </div>
-                      <div class="body-text">(212) 555-1234</div>
-                      <div class="body-text">info@fashionshop.com</div>
-                      <div class="list-icon-function">
-                          <div class="item eye">
-                              <i class="icon-eye"></i>
-                          </div>
-                          <div class="item edit">
-                              <i class="icon-edit-3"></i>
-                          </div>
-                          <div class="item trash">
-                              <i class="icon-trash-2"></i>
-                          </div>
-                      </div>
-                  </li>
-              </ul>
-          </div>
-          <div class="divider"></div>
-          <div class="flex items-center justify-between flex-wrap gap10">
-              <div class="text-tiny">Showing 10 entries</div>
-              <ul class="wg-pagination">
-                  <li>
-                      <a href="#"><i class="icon-chevron-left"></i></a>
-                  </li>
-                  <li>
-                      <a href="#">1</a>
-                  </li>
-                  <li class="active">
-                      <a href="#">2</a>
-                  </li>
-                  <li>
-                      <a href="#">3</a>
-                  </li>
-                  <li>
-                      <a href="#"><i class="icon-chevron-right"></i></a>
-                  </li>
-              </ul>
-          </div>
+              <div class="body-text"><%= client.phone %></div>
+              <div class="body-text"><%= client.birthdate %></div>
+              <div class="body-text"><%= client.email %></div>
+            </li>
+          <% end %>
+        </ul>
       </div>
-      <!-- /all-user -->
+      <div class="divider"></div>
+      <div class="flex items-center justify-between flex-wrap gap10">
+        <div class="text-tiny">Showing 10 entries</div>
+        <ul class="wg-pagination">
+          <li>
+            <a href="#"><i class="icon-chevron-left"></i></a>
+          </li>
+          <li>
+            <a href="#">1</a>
+          </li>
+          <li class="active">
+            <a href="#">2</a>
+          </li>
+          <li>
+            <a href="#">3</a>
+          </li>
+          <li>
+            <a href="#"><i class="icon-chevron-right"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- /all-user -->
   </div>
   <!-- /main-content-wrap -->
 </div>
