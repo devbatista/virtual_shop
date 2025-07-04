@@ -1,5 +1,5 @@
 class Admin::CategoriesController < Admin::BaseAdminController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
     per_page = params[:per].presence || 10
