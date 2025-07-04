@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboard', to: 'dashboard#index'
-    
+    root to: 'dashboard#index'
     resources :products
     resources :categories
     resources :orders, only: [:index, :show]
