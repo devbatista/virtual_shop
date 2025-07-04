@@ -355,7 +355,7 @@
       @include transition3();
 
       >div {
-        width: 100%;
+        width: 25% !important;
 
         &:last-child {
           width: 110px;

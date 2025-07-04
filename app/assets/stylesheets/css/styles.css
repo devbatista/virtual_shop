@@ -4401,7 +4401,7 @@ select option {
   transition: all 0.3s ease;
 }
 .wg-table.table-all-user .wg-product > div {
-  width: 100%;
+  width: 25% !important;
 }
 .wg-table.table-all-user .wg-product > div:last-child {
   width: 110px;
