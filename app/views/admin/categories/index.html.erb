@@ -78,11 +78,6 @@
             </div>
             <div class="body-text text-main-dark mt-4"><%= category.full_path || '' %></div>
             <div class="list-icon-function">
-              <div class="item eye">
-                <%= link_to admin_category_path(category) do %>
-                <i class="icon-eye"></i>
-                <% end %>
-              </div>
               <div class="item edit">
                 <%= link_to edit_admin_category_path(category) do %>
                 <i class="icon-edit-3"></i>
