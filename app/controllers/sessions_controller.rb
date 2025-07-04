@@ -1,6 +1,7 @@
 class SessionsController < BaseController
   layout false
 
+  before_action :redirect_if_customer_user, only: :new
   before_action :redirect_if_authenticated, only: :new
 
   def new;end
@@ -27,6 +28,10 @@ class SessionsController < BaseController
   end
 
   private
+
+    def redirect_if_customer_user
+      redirect_to root_path if current_user.customer?
+    end
 
     def redirect_if_authenticated
       if session[:user_id]
