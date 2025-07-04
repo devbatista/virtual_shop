@@ -30,8 +30,11 @@ class Admin::CategoriesController < Admin::BaseAdminController
   end
 
   def destroy
-    @category.destroy
-    redirect_to(admin_categories_path, notice: "Category deleted")
+    if @category.destroy
+      redirect_to(admin_categories_path, notice: "Category deleted")
+    else
+      redirect_to(admin_categories_path, alert: @category.errors.full_messages.to_sentence)
+    end
   end
 
   private
