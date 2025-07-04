@@ -1,15 +1,6 @@
 class Admin::ClientsController < Admin::BaseAdminController
-  before_action :clients
-  
-  def index;end
-
-  def show
-    @client = clients.find(params[:id])
+  def index
+    per_page = params[:per].presence || 10
+    @clients = User.clients.page(params[:page]).per(per_page)
   end
-
-  private
-
-    def clients
-      @clients ||= User.clients
-    end
 end

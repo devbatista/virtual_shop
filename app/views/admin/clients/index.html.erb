@@ -70,24 +70,40 @@
       </div>
       <div class="divider"></div>
       <div class="flex items-center justify-between flex-wrap gap10">
-        <div class="text-tiny">Showing 10 entries</div>
+        <div class="text-tiny">Showing <%= @clients.size %> of <%= @clients.total_count %> entries</div>
         <ul class="wg-pagination">
-          <li>
-            <a href="#"><i class="icon-chevron-left"></i></a>
+          <li class="<%= 'disabled' unless @clients.prev_page %>">
+            <% if @clients.prev_page %>
+              <%= link_to url_for(page: @clients.prev_page), class: "" do %>
+                <i class="icon-chevron-left"></i>
+              <% end %>
+            <% else %>
+              <span><i class="icon-chevron-left"></i></span>
+            <% end %>
           </li>
-          <li>
-            <a href="#">1</a>
+
+          <% (1..@clients.total_pages).each do |page| %>
+            <li class="<%= 'active' if page == @clients.current_page %>">
+              <% if page == @clients.current_page %>
+                <a class="disabled">
+                  <%= page %><!-- Ou qualquer ícone que quiser -->
+                </a>
+              <% else %>
+                <%= link_to page, url_for(page: page, per: params[:per]) %>
+              <% end %>
+            </li>
+          <% end %>
+
+          <li class="<%= 'disabled' unless @clients.next_page %>">
+            <% if @clients.next_page %>
+              <%= link_to url_for(page: @clients.next_page), class: "" do %>
+                <i class="icon-chevron-right"></i>
+              <% end %>
+            <% else %>
+              <span><i class="icon-chevron-right"></i></span>
+            <% end %>
           </li>
-          <li class="active">
-            <a href="#">2</a>
-          </li>
-          <li>
-            <a href="#">3</a>
-          </li>
-          <li>
-            <a href="#"><i class="icon-chevron-right"></i></a>
-          </li>
-        </ul>
+          </ul>
       </div>
     </div>
     <!-- /all-user -->
