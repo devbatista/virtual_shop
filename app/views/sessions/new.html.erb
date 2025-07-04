@@ -1,12 +1,83 @@
-<h1>Login</h1>
-<%= form_with url: login_path, method: :post do |form| %>
-  <div>
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+  <title>VirtualShop</title>
+  <%= csrf_meta_tags %>
+  <meta name="author" content="Rafael Batista">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Rails asset helpers -->
+  <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "css/animate.min", 
+                          "css/animation", 
+                          "css/bootstrap", 
+                          "css/bootstrap-select.min", 
+                          "css/styles", 
+                          "font/fonts", 
+                          "icon/style", 
+                          media: "all" %>
+                          
+  <%= favicon_link_tag "favicon.png" %>
+  <link rel="apple-touch-icon-precomposed" href="<%= asset_path('favicon.png') %>">
+  <%= javascript_importmap_tags %>
+</head>
+
+<body class="body">
+  <%= image_tag "images-section/bg-login.jpg", style: "display:none" %>
+
+  <!-- #wrapper -->
+  <div id="wrapper">
+    <!-- #page -->
+    <div id="page" class="">
+      <div class="login-page">
+        <div class="left" style="background: url(<%= asset_path('images-section/bg-login.jpg') %>) center/cover no-repeat;">
+          <div class="login-box">
+            <div>
+              <h3 style="color: #FFF">Login to account</h3>
+            </div>
+            <%= form_with url: login_path, method: :post, class: "form-login flex flex-column gap22 w-full" do |form| %>
+              <fieldset class="email">
+                <div class="body-title mb-10 text-white">Email address <span class="tf-color-1">*</span></div>
+                <%= form.email_field :email, class: "flex-grow", placeholder: "Enter your email address", required: true, tabindex: 0, "aria-required": true %>
+              </fieldset>
+              <fieldset class="password">
+                <div class="body-title mb-10 text-white">Password <span class="tf-color-1">*</span></div>
+                <%= form.password_field :password, class: "password-input", placeholder: "Enter your password", required: true, tabindex: 0, "aria-required": true %>
+                <span class="show-pass">
+                  <i class="icon-eye view"></i>
+                  <i class="icon-eye-off hide"></i>
+                </span>
+              </fieldset>
+              <div class="flex justify-between items-center">
+                <div class="flex gap10">
+                  <%= form.check_box :remember_me, class: "tf-check", id: "signed" %>
+                  <label class="body-text text-white" for="signed">Keep me signed in</label>
+                </div>
+                <a href="#" class="body-text tf-color">Forgot password?</a>
+              </div>
+              <button type="submit" class="tf-button w-full">Login</button>
+            <% end %>
+          </div>
+        </div>
+        <div class="right">
+          <%= image_tag "images-section/Sign in.jpg", alt: "" %>
+        </div>
+      </div>
+    </div>
+    <!-- /#page -->
   </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-  <%= form.submit "Entrar" %>
-<% end %>
+  <!-- /#wrapper -->
+
+  <!-- Javascript -->
+  <%= javascript_include_tag "jquery.min" %>
+  <%= javascript_include_tag "theme-settings", defer: true %>
+
+</body>
+
+</html>

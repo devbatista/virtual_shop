@@ -91,7 +91,7 @@
     min-height: 100vh;
     .left {
         width: 100%;
-        background-image: url(../images/images-section/bg-login.jpg);
+        background-image: asset-url('images-section/bg-login.jpg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
