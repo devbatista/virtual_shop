@@ -2,7 +2,8 @@ class Admin::CategoriesController < Admin::BaseAdminController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
-    @categories = Category.page(params[:page]).per(10)
+    per_page = params[:per].presence || 10
+    @categories = Category.page(params[:page]).per(per_page)
   end
 
   def show; end

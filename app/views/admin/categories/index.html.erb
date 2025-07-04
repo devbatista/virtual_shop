@@ -30,17 +30,19 @@
     <div class="wg-box">
       <div class="flex items-center justify-between gap10 flex-wrap">
         <div class="wg-filter flex-grow">
-          <div class="show">
-            <div class="text-tiny">Showing</div>
-            <div class="select">
-              <select class="">
-                <option>10</option>
-                <option>20</option>
-                <option>30</option>
-              </select>
+          <form method="get" class="w-auto">
+            <div class="show">
+              <div class="text-tiny">Showing</div>
+              <div class="select">
+                <select name="per" onchange="this.form.submit()">
+                  <option value="10" <%= 'selected' if params[:per].to_s == '10' %>>10</option>
+                  <option value="20" <%= 'selected' if params[:per].to_s == '20' %>>20</option>
+                  <option value="30" <%= 'selected' if params[:per].to_s == '30' %>>30</option>
+                </select>
+              </div>
+              <div class="text-tiny">entries</div>
             </div>
-            <div class="text-tiny">entries</div>
-          </div>
+          </form>
           <form class="form-search">
             <fieldset class="name">
               <input type="text" placeholder="Search here..." class="" name="name" tabindex="2" value="" aria-required="true" required="">
@@ -98,26 +100,8 @@
       </div>
       <div class="divider"></div>
       <div class="flex items-center justify-between flex-wrap gap10">
-        <div class="text-tiny">Showing 10 entries</div>
-        <%# <ul class="wg-pagination">
-          <li>
-            <a href="#"><i class="icon-chevron-left"></i></a>
-          </li>
-          <li class="active">
-            <a href="#">1</a>
-          </li>
-          <li>
-            <a href="#">2</a>
-          </li>
-          <li>
-            <a href="#">3</a>
-          </li>
-          <li>
-            <a href="#"><i class="icon-chevron-right"></i></a>
-          </li>
-        </ul> %>
+        <div class="text-tiny">Showing <%= @categories.size %> of <%= @categories.total_count %> entries</div>
         <ul class="wg-pagination">
-          <!-- Página anterior -->
           <li class="<%= 'disabled' unless @categories.prev_page %>">
             <% if @categories.prev_page %>
               <%= link_to url_for(page: @categories.prev_page), class: "" do %>
@@ -128,7 +112,6 @@
             <% end %>
           </li>
 
-          <!-- Números das páginas -->
           <% (1..@categories.total_pages).each do |page| %>
             <li class="<%= 'active' if page == @categories.current_page %>">
               <% if page == @categories.current_page %>
@@ -136,12 +119,11 @@
                   <%= page %><!-- Ou qualquer ícone que quiser -->
                 </a>
               <% else %>
-                <%= link_to page, url_for(page: page) %>
+                <%= link_to page, url_for(page: page, per: params[:per]) %>
               <% end %>
             </li>
           <% end %>
 
-          <!-- Próxima página -->
           <li class="<%= 'disabled' unless @categories.next_page %>">
             <% if @categories.next_page %>
               <%= link_to url_for(page: @categories.next_page), class: "" do %>
