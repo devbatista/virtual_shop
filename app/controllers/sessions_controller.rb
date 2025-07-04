@@ -30,7 +30,7 @@ class SessionsController < BaseController
   private
 
     def redirect_if_customer_user
-      redirect_to root_path if current_user.customer?
+      redirect_to root_path if current_user&.customer?
     end
 
     def redirect_if_authenticated
