@@ -6,6 +6,7 @@ User.create!(
   email: "rafael@devbatista.com",
   password: "senha123",
   password_confirmation: "senha123",
+  phone: '+55 11 98681-9042',
   role: :admin
 )
 
@@ -15,6 +16,7 @@ User.create!(
   email: "robertson@virtualshop.com",
   password: "senha123",
   password_confirmation: "senha123",
+  phone: '+55 11 99130-8008',
   role: :customer
 )
 
