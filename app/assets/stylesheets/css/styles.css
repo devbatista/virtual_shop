@@ -2705,6 +2705,16 @@ a:hover {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
+
+.tf-button.back-button {
+  background-color: #808080;
+  border-color: transparent;
+}
+
+.tf-button.back-button:hover {
+  border-color: #ff7433;
+}
+
 .tf-button span {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
