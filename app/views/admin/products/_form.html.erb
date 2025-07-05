@@ -33,10 +33,6 @@
       <input class="mb-10" type="text" placeholder="Enter title" name="text" tabindex="0" value="" aria-required="true" required="">
       <div class="text-tiny text-surface-2">Do not exceed 20 characters when entering the product name.</div>
     </fieldset>
-    <%# <fieldset class="category">
-          <div class="body-title mb-10">Category <span class="tf-color-1">*</span></div>
-          <input class="" type="text" placeholder="Choose category" name="text" tabindex="0" value="" aria-required="true" required="">
-        </fieldset> %>
     <fieldset class="category">
       <div class="body-title mb-10">Category <span class="tf-color-1">*</span></div>
       <div class="select">
@@ -44,6 +40,10 @@
         <%= form.select :category_id, category_options, { prompt: "Choose category" }, class: "" %>
         <% end %>
       </div>
+    </fieldset>
+    <fieldset class="storage">
+      <div class="body-title mb-10">Storage <span class="tf-color-1">*</span></div>
+      <input class="" type="number" placeholder="Storage" name="text" tabindex="0" value="" aria-required="true" required="">
     </fieldset>
     <div class="cols-lg gap22">
       <fieldset class="price">
@@ -85,7 +85,7 @@
     </fieldset>
   </div>
 
-  <div class="cols gap10">
+  <div class="cols gap10 flex">
     <button class="tf-button w380" type="submit">Add product</button>
     <a href="#" class="tf-button style-3 w380" type="submit">Cancel</a>
   </div>
