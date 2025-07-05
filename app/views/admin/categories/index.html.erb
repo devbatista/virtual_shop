@@ -76,7 +76,7 @@
                 <a href="#" class="body-text"><%= category.name %></a>
               </div>
             </div>
-            <div class="body-text text-main-dark mt-4"><%= category.full_path || '' %></div>
+            <div class="body-text text-main-dark mt-4"><%= category.parent&.name || '' %></div>
             <div class="list-icon-function">
               <div class="item edit">
                 <%= link_to edit_admin_category_path(category) do %>
