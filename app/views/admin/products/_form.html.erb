@@ -1,6 +1,6 @@
 <!-- filepath: app/views/admin/products/_form.html.erb -->
 
-<form class="form-add-product">
+<%= form_with model: @product, url: admin_products_path, local: true do |form| %>
   <div class="wg-box mb-30">
     <fieldset>
       <div class="body-title mb-10">Upload images</div>
@@ -36,14 +36,14 @@
     <fieldset class="category">
       <div class="body-title mb-10">Category <span class="tf-color-1">*</span></div>
       <div class="select">
-        <%= form_with model: @product, url: admin_products_path, local: true do |form| %>
         <%= form.select :category_id, category_options, { prompt: "Choose category" }, class: "" %>
-        <% end %>
       </div>
     </fieldset>
     <fieldset class="storage">
       <div class="body-title mb-10">Storage <span class="tf-color-1">*</span></div>
-      <input class="" type="number" placeholder="Storage" name="text" tabindex="0" value="" aria-required="true" required="">
+      <div class="select">
+        <%= form.select :storage_id, storage_options, { prompt: "Choose storage" }, class: "" %>
+      </div>
     </fieldset>
     <div class="cols-lg gap22">
       <fieldset class="price">
@@ -89,4 +89,4 @@
     <button class="tf-button w380" type="submit">Add product</button>
     <a href="#" class="tf-button style-3 w380" type="submit">Cancel</a>
   </div>
-</form>
+<% end %>

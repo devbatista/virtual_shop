@@ -1,14 +1,14 @@
 puts "Creating storage"
 
-Storate.create!(
+Storage.create!(
   name: "256GB"
 )
 
-Storate.create!(
+Storage.create!(
   name: "512GB"
 )
 
-Storate.create!(
+Storage.create!(
   name: "1TB"
 )
 
