@@ -4,6 +4,6 @@ module Admin::ProductsHelper
   end
 
   def storage_options
-    Storage.all.collect { |s| [s.name, s.id] }
+    Storage.all.collect { |s| [s.value, s.id] }
   end
 end
