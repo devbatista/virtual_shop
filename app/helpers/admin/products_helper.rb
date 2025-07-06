@@ -6,4 +6,8 @@ module Admin::ProductsHelper
   def storage_options
     Storage.all.collect { |s| [s.value, s.id] }
   end
+
+  def color_options
+    Color.all
+  end
 end

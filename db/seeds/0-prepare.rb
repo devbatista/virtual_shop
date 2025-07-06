@@ -6,5 +6,6 @@ Product.delete_all
 Category.delete_all
 User.delete_all
 Storage.delete_all
+Color.delete_all
 
 puts "Clean environment"
