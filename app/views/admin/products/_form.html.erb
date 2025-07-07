@@ -1,5 +1,3 @@
-<!-- filepath: app/views/admin/products/_form.html.erb -->
-
 <%= form_with model: @product, url: admin_products_path, local: true do |form| %>
   <div class="wg-box mb-30">
     <fieldset>
@@ -37,13 +35,7 @@
   <div class="wg-box mb-30">
     <fieldset class="name">
       <div class="body-title mb-10">Product title <span class="tf-color-1">*</span></div>
-      <input class="mb-10" type="text" 
-                           placeholder="Enter title" 
-                           name="text" 
-                           tabindex="0" 
-                           value="" 
-                           aria-required="true" 
-                           required="">
+      <%= form.text_field :name, class: "mb-10", placeholder: "Enter title", required: true %>
       <div class="text-tiny text-surface-2">Do not exceed 20 characters when entering the product name.</div>
     </fieldset>
     <fieldset class="category">
@@ -61,13 +53,7 @@
     <div class="cols-lg gap22">
       <fieldset class="price">
         <div class="body-title mb-10">Price <span class="tf-color-1">*</span></div>
-        <input class="" type="number" 
-                        placeholder="Price" 
-                        name="text" 
-                        tabindex="0" 
-                        value="" 
-                        aria-required="true" 
-                        required="">
+        <%= form.number_field :price, placeholder: "Price", required: true, step: 0.01 %>
       </fieldset>
       <fieldset class="variant-picker-item">
         <div class="variant-picker-label body-title">
@@ -84,23 +70,17 @@
       </fieldset>
       <fieldset class="category">
         <div class="body-title mb-10">Stock</div>
-        <input class="" type="text" placeholder="Enter Stock" name="text" tabindex="0" value="" aria-required="true">
+        <%= form.number_field :stock, placeholder: "Enter Stock" %>
       </fieldset>
     </div>
     <fieldset class="description">
       <div class="body-title mb-10">Description <span class="tf-color-1">*</span></div>
-      <textarea class="mb-10" name="description" 
-                              placeholder="Short description about product" 
-                              tabindex="0" 
-                              aria-required="true" 
-                              required="">
-      </textarea>
+      <%= form.text_area :description, class: "mb-10", placeholder: "Short description about product", required: true %>
       <div class="text-tiny">Do not exceed 100 characters when entering the product name.</div>
     </fieldset>
   </div>
-
   <div class="cols gap10 flex">
     <button class="tf-button w380" type="submit">Add product</button>
-    <a href="#" class="tf-button style-3 w380" type="submit">Cancel</a>
+    <%= link_to "Cancel", admin_products_path, class: "tf-button style-3 w380" %>
   </div>
 <% end %>
