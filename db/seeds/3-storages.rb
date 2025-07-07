@@ -1,15 +1,15 @@
 puts "Creating storage"
 
 Storage.create!(
-  name: "256GB"
+  value: "256GB"
 )
 
 Storage.create!(
-  name: "512GB"
+  value: "512GB"
 )
 
 Storage.create!(
-  name: "1TB"
+  value: "1TB"
 )
 
 puts "Storages created successfully"

@@ -6,7 +6,9 @@ Product.create!(
   description: "Apple MacBook Air with M3 chip",
   price: 12000,
   stock: 10,
-  category: Category.find_by(name: "Macbook Air")
+  category: Category.find_by(name: "Macbook Air"),
+  storage: Storage.order('RANDOM()').first,
+  color: Color.order('RANDOM()').first
 )
 
 Product.create!(
@@ -14,7 +16,9 @@ Product.create!(
   description: "Apple MacBook Pro with M3 Pro chip",
   price: 18000,
   stock: 8,
-  category: Category.find_by(name: "Macbook Pro")
+  category: Category.find_by(name: "Macbook Pro"),
+  storage: Storage.order('RANDOM()').first,
+  color: Color.order('RANDOM()').first
 )
 
 Product.create!(
@@ -22,7 +26,9 @@ Product.create!(
   description: "Apple iMac 24 inches",
   price: 15000,
   stock: 5,
-  category: Category.find_by(name: "iMac")
+  category: Category.find_by(name: "iMac"),
+  storage: Storage.order('RANDOM()').first,
+  color: Color.order('RANDOM()').first
 )
 
 # iPads
@@ -31,7 +37,9 @@ Product.create!(
   description: "New iPad Pro with M4 chip",
   price: 11000,
   stock: 12,
-  category: Category.find_by(name: "Ipad Pro")
+  category: Category.find_by(name: "Ipad Pro"),
+  storage: Storage.order('RANDOM()').first,
+  color: Color.order('RANDOM()').first
 )
 
 Product.create!(
@@ -39,7 +47,9 @@ Product.create!(
   description: "iPad Air 11 inches",
   price: 7000,
   stock: 15,
-  category: Category.find_by(name: "Ipad Air")
+  category: Category.find_by(name: "Ipad Air"),
+  storage: Storage.order('RANDOM()').first,
+  color: Color.order('RANDOM()').first
 )
 
 # iPhones
@@ -48,7 +58,9 @@ Product.create!(
   description: "Apple iPhone 16",
   price: 9000,
   stock: 20,
-  category: Category.find_by(name: "Iphone 16")
+  category: Category.find_by(name: "Iphone 16"),
+  storage: Storage.order('RANDOM()').first,
+  color: Color.order('RANDOM()').first
 )
 
 Product.create!(
@@ -56,7 +68,9 @@ Product.create!(
   description: "Apple iPhone 16 Pro",
   price: 11000,
   stock: 10,
-  category: Category.find_by(name: "Iphone 16 Pro")
+  category: Category.find_by(name: "Iphone 16 Pro"),
+  storage: Storage.order('RANDOM()').first,
+  color: Color.order('RANDOM()').first
 )
 
 Product.create!(
@@ -64,7 +78,9 @@ Product.create!(
   description: "Apple iPhone 15",
   price: 7500,
   stock: 18,
-  category: Category.find_by(name: "Iphone 15")
+  category: Category.find_by(name: "Iphone 15"),
+  storage: Storage.order('RANDOM()').first,
+  color: Color.order('RANDOM()').first
 )
 
 # Watches
