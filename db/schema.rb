@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_07_155007) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_07_173826) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -66,6 +66,18 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_07_155007) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "product_stocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "product_id", null: false
+    t.uuid "color_id"
+    t.uuid "storage_id"
+    t.integer "quantity", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["color_id"], name: "index_product_stocks_on_color_id"
+    t.index ["product_id"], name: "index_product_stocks_on_product_id"
+    t.index ["storage_id"], name: "index_product_stocks_on_storage_id"
+  end
+
   create_table "products", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -74,8 +86,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_07_155007) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "category_id"
-    t.uuid "storage_id"
-    t.uuid "color_id"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
@@ -107,6 +117,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_07_155007) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users"
+  add_foreign_key "product_stocks", "colors"
+  add_foreign_key "product_stocks", "products"
+  add_foreign_key "product_stocks", "storages"
   add_foreign_key "products", "categories"
-  add_foreign_key "products", "colors"
 end
