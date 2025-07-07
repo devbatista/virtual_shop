@@ -52,12 +52,12 @@
       </fieldset>
       <fieldset class="variant-picker-item">
         <div class="variant-picker-label body-title">
-          Color: <span>Test</span>
+          Color: <span class="variant-picker-label-value"><%= color_options.first&.name %></span>
         </div>
         <div class="variant-picker-values">
           <% color_options.each do |color| %>
-            <%= form.radio_button :color_id, color.id, id: "color-#{color.name}" %>
-            <label class="radius-60" for="color-<%= color.id %>" data-value="<%= color.hex %>">
+            <%= form.radio_button :color_id, color.id, id: "color-#{color.id}" %>
+            <label class="radius-60" for="color-<%= color.id %>" data-value="<%= color.name %>">
               <span class="btn-checkbox" style="background-color: <%= color.hex %>"></span>
             </label>
           <% end %>
