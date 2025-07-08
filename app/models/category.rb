@@ -22,6 +22,10 @@ class Category < ApplicationRecord
     parent ? "#{parent.full_path(separator)}#{separator}#{name}" : name
   end
 
+  def master_parent
+    parent.nil? ? self : parent.master_parent
+  end
+
   private
 
     def cannot_be_own_parent
