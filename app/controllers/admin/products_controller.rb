@@ -32,15 +32,10 @@ class Admin::ProductsController < Admin::BaseAdminController
   end
 
   def destroy
-    http_status = request.format.turbo_stream? ? :see_other : :found
-
-    if @product.order_items.exists?
-      redirect_to(admin_products_path, 
-                  alert: "Cannot delete, the product has an associated order",
-                  status: http_status)
+    if @product.destroy
+      redirect_to(admin_products_path, notice: "Product deleted", status: :see_other)
     else
-      @product.destroy
-      redirect_to(admin_products_path, notice: "Product deleted", status: http_status)
+      redirect_to(admin_products_path, alert: @product.errors.full_messages, status: :see_other)
     end
   end
 
