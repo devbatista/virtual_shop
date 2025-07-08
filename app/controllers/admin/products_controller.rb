@@ -2,7 +2,8 @@ class Admin::ProductsController < Admin::BaseAdminController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    per_page = params[:per].presence || 10
+    @products = Product.page(params[:page]).per(per_page)
   end
 
   def show;end
