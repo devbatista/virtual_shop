@@ -3,8 +3,6 @@ class Product < ApplicationRecord
   has_many :order_items
 
   belongs_to :category
-  belongs_to :color, optional: true
-  belongs_to :storage, optional: true
 
   validates :name, presence: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
