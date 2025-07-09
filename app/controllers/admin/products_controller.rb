@@ -47,6 +47,6 @@ class Admin::ProductsController < Admin::BaseAdminController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :price, :stock, :category_id, :storage_id, :color_id)
+      params.require(:product).permit(:name, :description, :price, :category_id)
     end
 end

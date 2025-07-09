@@ -44,33 +44,10 @@
         <%= form.select :category_id, category_options, { prompt: "Choose category" }, class: "" %>
       </div>
     </fieldset>
-    <fieldset class="storage">
-      <div class="body-title mb-10">Storage <span class="tf-color-1">*</span></div>
-      <div class="select">
-        <%= form.select :storage_id, storage_options, { prompt: "Choose storage" }, class: "" %>
-      </div>
-    </fieldset>
     <div class="cols-lg gap22">
       <fieldset class="price">
         <div class="body-title mb-10">Price <span class="tf-color-1">*</span></div>
         <%= form.number_field :price, placeholder: "Price", required: true, step: 0.01 %>
-      </fieldset>
-      <fieldset class="variant-picker-item">
-        <div class="variant-picker-label body-title">
-          Color: <span class="variant-picker-label-value"><%= color_options.first&.name %></span>
-        </div>
-        <div class="variant-picker-values">
-          <% color_options.each do |color| %>
-            <%= form.radio_button :color_id, color.id, id: "color-#{color.id}" %>
-            <label class="radius-60" for="color-<%= color.id %>" data-value="<%= color.name %>">
-              <span class="btn-checkbox" style="background-color: <%= color.hex %>"></span>
-            </label>
-          <% end %>
-        </div>
-      </fieldset>
-      <fieldset class="category">
-        <div class="body-title mb-10">Stock</div>
-        <%= form.number_field :stock, placeholder: "Enter Stock" %>
       </fieldset>
     </div>
     <fieldset class="description">
