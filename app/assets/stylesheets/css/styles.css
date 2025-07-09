@@ -4990,6 +4990,23 @@ select option {
   display: none;
 }
 
+.image-preview-grid {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.image-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  padding: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
 @media (min-width: 992px) {
   .layout-wrap.menu-style-icon-default.full-width .section-menu-left {
     left: 0;

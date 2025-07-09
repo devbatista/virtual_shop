@@ -12,6 +12,8 @@ class Product < ApplicationRecord
   before_destroy :ensure_no_orders_or_stock
   before_destroy :clean_up_stock_before_destroy
 
+  has_many_attached :images
+
   def in_stock?
     stock.sum(:quantity).positive?
   end

@@ -4,31 +4,38 @@
       <div class="body-title mb-10">Upload images</div>
       <div class="upload-image mb-16">
         <div class="up-load">
-          <label class="uploadfile" for="myFile">
+          <label class="uploadfile" for="product_images">
             <span class="icon">
               <i class="icon-upload-cloud"></i>
             </span>
-            <div class="text-tiny">Drop your images here or select 
+            <div class="text-tiny">
+              Drop your images here or select 
               <span class="text-secondary">click to browse</span>
             </div>
-            <input type="file" id="myFile" name="filename">
-            <img src="" id="myFile-input" alt="">
+            <%= form.file_field :images, 
+                                multiple: true,
+                                direct_upload: true,
+                                id: "product_images",
+                                class: "",
+                                accept: "image/*",
+                                onchange: "previewImages(event)" %>
           </label>
+          <div id="preview-images" class="image-preview-grid mt-4 d-none"></div>
         </div>
         <div class="flex gap20 flex-wrap">
-          <div class="item">
-            <img src="images/upload/img-1.jpg" alt="">
-          </div>
-          <div class="item">
-            <img src="images/upload/img-2.jpg" alt="">
-          </div>
+          <% @product.images.each do |image| %>
+            <div class="item">
+              <%= image_tag image.variant(resize_to_limit: [200, 200]), alt: "" if image.attached? %>
+            </div>
+          <% end %>
         </div>
       </div>
-      <div class="body-text">You need to add at least 4 images. 
-                             Pay attention to the quality of the pictures you add, 
-                             comply with the background color standards. 
-                             Pictures must be in certain dimensions. 
-                             Notice that the product shows all the details
+      <div class="body-text">
+        You need to add at least 4 images. 
+        Pay attention to the quality of the pictures you add, 
+        comply with the background color standards. 
+        Pictures must be in certain dimensions. 
+        Notice that the product shows all the details
       </div>
     </fieldset>
   </div>

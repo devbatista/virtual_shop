@@ -228,5 +228,22 @@
     preloader();
     
   });
-
+  
 })(jQuery);
+
+window.previewImages = function(event) {
+  const preview = document.getElementById('preview-images');
+  preview.classList.remove('d-none');
+  preview.innerHTML = '';
+  Array.from(event.target.files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.style.maxWidth = '200px';
+      img.style.margin = '5px';
+      preview.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  });
+};
