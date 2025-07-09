@@ -13,7 +13,6 @@ class Admin::ProductsController < Admin::BaseAdminController
   end
 
   def create
-    binding.pry
     @product = Product.new(product_params)
     if @product.save
       redirect_to(admin_product_path(@product), notice: "Product created successfully")
