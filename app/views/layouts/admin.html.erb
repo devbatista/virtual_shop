@@ -16,7 +16,13 @@
 
   <!-- Rails asset helpers -->
   <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
-  <%= stylesheet_link_tag "css/animate.min", "css/animation", "css/bootstrap", "css/bootstrap-select.min", "css/styles", "font/fonts", "icon/style", media: "all" %>
+  <%= stylesheet_link_tag "css/animate.min", 
+                          "css/animation",
+                          "css/bootstrap",
+                          "css/bootstrap-select.min",
+                          "css/styles",
+                          "font/fonts",
+                          "icon/style", media: "all" %>
 
   <%= favicon_link_tag "favicon.png" %>
   <link rel="apple-touch-icon-precomposed" href="<%= asset_path('favicon.png') %>">
@@ -62,6 +68,12 @@
                     <%= link_to admin_products_path, class: "nav-link" do %>
                     <div class="icon"><i class="icon-file-plus"></i></div>
                     <div class="text">Products</div>
+                    <% end %>
+                  </li>
+                  <li class="menu-item">
+                    <%= link_to admin_products_path, class: "nav-link" do %>
+                    <div class="icon"><i class="icon-archive"></i></div>
+                    <div class="text">Stock</div>
                     <% end %>
                   </li>
                   <li class="menu-item">
