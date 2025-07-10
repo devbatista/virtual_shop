@@ -2,10 +2,6 @@ class Admin::StocksController < Admin::BaseAdminController
   before_action :set_product, only: [:new, :create]
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @stocks = ProductStock.includes(:product).all
-  end
-
   def show;end
 
   def new
@@ -15,7 +11,7 @@ class Admin::StocksController < Admin::BaseAdminController
   def create
     @stock = @product.stock.build(stock_params)
     if @stock.save
-      redirect_to admin_stock_path(@stock), notice: "Estoque criado com sucesso."
+      redirect_to admin_product_path(@product), notice: "Estoque criado com sucesso."
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,15 +21,10 @@ class Admin::StocksController < Admin::BaseAdminController
 
   def update
     if @stock.update(stock_params)
-      redirect_to admin_stock_path(@stock), notice: "Estoque atualizado com sucesso."
+      redirect_to admin_product_path(@stock.product), notice: "Estoque atualizado com sucesso."
     else
       render :edit, status: :unprocessable_entity
     end
-  end
-
-  def destroy
-    @stock.destroy
-    redirect_to admin_stocks_path, notice: "Estoque removido com sucesso."
   end
 
   private
