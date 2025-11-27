@@ -359,7 +359,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kaminari
-  pg (~> 1.1)
+  pg (~> 1.5.9)
   pry-byebug
   puma (>= 5.0)
   rails (~> 7.1.5, >= 7.1.5.1)
